@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="brand-title">Market Application</div>
+        <div>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./dashboard.html">Dashboard</a></li>
+          </ul>
+        </div>
+      </div>
+    <main>
+        <div class="dashboard">
+
+            <div class="metric">
+                <h2 id="total-sales-text">Total Sales (This Month)</h2>
+                <p id="total-sales-month">0</p>
+            </div>
+            <div class="metric">
+                <h2>Total Sales</h2>
+                <p id="total-sales">0</p>
+            </div>
+        </div>
+
+        <div class="daily-sales">
+            <h2>Daily Sales</h2>
+            <table class="daily-table">
+                <thead>
+                    <tr>
+                        <th>Revenue</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody id="daily-sales">
+
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

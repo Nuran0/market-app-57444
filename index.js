@@ -10,6 +10,10 @@ const acceptButton = document.querySelector('.accept')
 const discardButton = document.querySelector('.discard')
 const notfElement = document.querySelector('.notf')
 
+const nextDayDate = document.getElementById('next-day-date')
+const finishDay = document.getElementById('finish-day')
+
+
 
 // state
 let products = [
@@ -23,6 +27,8 @@ let products = [
 let selectedProducts = []
 
 let generalIncome = 0
+
+
 
 // Utilities
 
@@ -234,6 +240,35 @@ function discardSelectedProducts(e) {
     changeTotalPrice(0)
 }
 
+function finishDayHandler() {
+    // Get the current date and format it as YYYY-MM-DD
+    const date = new Date();
+    const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+
+    // Get the existing data from localStorage
+    let data = JSON.parse(localStorage.getItem('data')) || [];
+
+    // Find the item with the current date
+    let item = data.find(item => item.date === formattedDate);
+
+    if (item) {
+        // If the item exists, add the generalIncome to the existing income
+        item.income += generalIncome;
+    } else {
+        // If the item doesn't exist, add a new item to the data
+        data.push({
+            date: formattedDate,
+            income: generalIncome
+        });
+    }
+
+    // Store the updated data back in localStorage
+    localStorage.setItem('data', JSON.stringify(data));
+    generalIncome = 0;
+    changeGeneralIncome();
+    syncProductsWithStorage();
+}
+
 // Events
 addProductButton.onclick = addNewProductHandler
 window.addEventListener('load', loadProductsHandler)
@@ -241,4 +276,13 @@ searchInput.addEventListener('input', searchHandler)
 searchInput.addEventListener('keydown', searchSubmitHandler)
 acceptButton.addEventListener('click', acceptSelectedProducts)
 discardButton.addEventListener('click', discardSelectedProducts)
+finishDay.addEventListener('click', finishDayHandler);
 notfElement.lastElementChild.addEventListener('click', hideNotf)
+
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const date = new Date();
+    const formattedDate = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    nextDayDate.textContent = formattedDate;
+});

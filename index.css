@@ -18,6 +18,9 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -29,6 +32,29 @@ body {
   font-size: 30px;
   font-weight: bold;
   color: white;
+}
+
+.container .navbar ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 20px;
+}
+
+.container .navbar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 5px;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+}
+
+.container .navbar ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 .container .main {
@@ -156,6 +182,28 @@ body {
   cursor: pointer;
 }
 
+.container .main .total-div .next-day-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  width: 150px;
+}
+
+.container .main .total-div .next-day-box button {
+  background-color: lightblue;
+  border: 1px solid lightblue;
+  cursor: pointer;
+  padding: 10px 30px;
+}
+
 .container .main .add-form {
   -webkit-box-ordinal-group: 5;
       -ms-flex-order: 4;
@@ -215,7 +263,7 @@ body {
   visibility: visible;
 }
 
-@media only screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
   .container .main {
     -ms-grid-columns: auto;
         grid-template-columns: auto;
@@ -247,6 +295,16 @@ body {
     -webkit-box-ordinal-group: 5;
         -ms-flex-order: 4;
             order: 4;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .container .navbar .brand-title {
+    font-size: 25px;
+  }
+  .container .navbar ul li a {
+    font-size: 15px;
+    padding: 5px;
   }
 }
 /*# sourceMappingURL=index.css.map */
